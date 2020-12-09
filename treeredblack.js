@@ -1,13 +1,17 @@
 class Node {
-    constructor() {
-    
+    constructor(value) {
+        this.value = value;
+        this.color ;
+        this.left;
+        this.right;
     }
 }
 
 class Tree {
         
     constructor() {
-        this.root = null;
+        this.root = null ;
+        
     }
   correctedColor(node,value) {
       let parent = node.right;
@@ -47,18 +51,18 @@ class Tree {
       return tree;
   }
 
-    insertNode(node, value) {
+    insertNode(node, num) {
         let child = {value:null , color:"black",left:null,right :null}
-        let newNode = {value:value , color:"red",left:child ,right :child}
+        let newNode = {value:this.value , color:"red",left:child ,right :child}
         
         if(node.value === null) {
-            return newNode
+            return newNode;
         } else if (value > node.value) {
             node.right = this.insertNode(node.right,value);
             if(node.color === "red") return node;
             else if(node.right.color === "red") {
                 if(hasRed(node.right)){
-                return correctedColor(node,value)
+                return correctedColor(node,num)
                 } else return node;
             }
             else return node;
@@ -67,6 +71,9 @@ class Tree {
     }
 
 }
-tree.insert(11);
-tree.insert(8);
-tree.insert(5);
+const tree = new Tree();
+tree.insert(12);
+tree.insert(13);
+tree.insert(12);
+
+console.log(tree)
