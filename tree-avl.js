@@ -50,25 +50,25 @@ class Tree {
             node.right = this.insertNode(node.right, value);
         }
 
-        let equilibrio = this.balance(node);
+        let balancing = this.balance(node);
         
-        console.log("Equi = " + equilibrio);
+        console.log("Equi = " + balancing);
         
-        if (equilibrio < -1  && this.balance(node.left) < 0) {
-            console.log("realizando rotação a direita")
+        if (balancing < -1  && this.balance(node.left) < 0) {
+            console.log(" rotação a direita")
             return this.rotateRight(node);
         }
-        if (equilibrio > 1 && this.balance(node.right) > 0) {
-            console.log("realizando rotação a esquerda")
+        if (balancing > 1 && this.balance(node.right) > 0) {
+            console.log(" rotação a esquerda")
             return this.rotateLeft(node);
         }
-        if (equilibrio < -1  && this.balance(node.left) >  0) { 
-            console.log("realizando rotação dupla a direita")
+        if (balancing < -1  && this.balance(node.left) >  0) { 
+            console.log(" rotação dupla a direita")
             node.left = this.rotateLeft(node.left); 
             node = this.rotateRight(node);
         }
-        if (equilibrio > 1 && this.balance(node.right) < 0) {
-            console.log("realizando rotação dupla a esquerda")
+        if (balancing > 1 && this.balance(node.right) < 0) {
+            console.log(" rotação dupla a esquerda")
             node.right = this.rotateRight(node.right);
             node = this.rotateLeft(node);
         }
@@ -119,23 +119,25 @@ class Tree {
 const tree = new Tree();
 
 //rotação a esquerda simples
-// tree.insert(6);
-// tree.insert(8);
-// tree.insert(9);
+// tree.insert(30);
+// tree.insert(5);
+// tree.insert(35);
+// tree.insert(32);
+// tree.insert(40);
+// tree.insert(45);
 
-
-tree.insert(32);
-tree.insert(31);
-tree.insert(35);
-tree.insert(33);
-tree.insert(36);
-tree.insert(38);
+// tree.insert(32);
+// tree.insert(31);
+// tree.insert(35);
+// tree.insert(33);
+// tree.insert(36);
+// tree.insert(38);
 
 
 //rotação a direita simples
-// tree.insert(11);
-// tree.insert(8);
-// tree.insert(5);
+tree.insert(11);
+tree.insert(8);
+tree.insert(5);
 
 // tree.insert(50);
 // tree.insert(70);
