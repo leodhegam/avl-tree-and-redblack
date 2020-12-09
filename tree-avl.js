@@ -7,8 +7,6 @@ class Node {
     }
 }
 
-
-
 class Tree {
         
     constructor() {
@@ -66,15 +64,15 @@ class Tree {
         }
         if (equilibrio < -1  && this.balance(node.left) >  0) { 
             console.log("realizando rotação dupla a direita")
-            // node.left = this.rotateLeft(node.left); 
-            // node = this.rotateRight(node);
+            node.left = this.rotateLeft(node.left); 
+            node = this.rotateRight(node);
+        }
         if (equilibrio > 1 && this.balance(node.right) < 0) {
             console.log("realizando rotação dupla a esquerda")
-            // node.right = this.rotateRight(node.right);
-            // node = this.rotateLeft(node);
-            }
-            
+            node.right = this.rotateRight(node.right);
+            node = this.rotateLeft(node);
         }
+        
         return node;
     }
 
@@ -83,28 +81,7 @@ class Tree {
        node.right = x.left;
        x.left = node;
        return x;
-        // // right child becomes his parent
-        // // his right child's child becomes his child
-        // console.log("left");
-        // let auxNode = node.right;
-        // node.right = auxNode.left;
-        
-        // if (auxNode.left !== null) {
-        //     auxNode.left.parent = node;
-        // }
-
-        // auxNode.parent = node.parent;
-
-        // if (node.parent === null) {
-        //     this.root = auxNode;
-        // } else if (node.parent.left == node) {
-        //     node.parent.left = auxNode;
-        // } else {
-        //     node.parent.right = auxNode;
-        // }
-
-        // auxNode.left = node;
-        // node.parent = auxNode;
+       
     }
 
     rotateRight(node) {
@@ -112,31 +89,6 @@ class Tree {
         node.left = x.right;
         x.right = node;
         return x;
-
-        // console.log("right");
-
-        // let auxNode = node.left;
-        // node.left = auxNode.right;
-        
-        // if(auxNode.right !== null) {
-        //     auxNode.right.parent = node;
-        // }
-
-        // auxNode.parent = node.parent;
-
-        // if(node.parent === null) {
-        //     this.root = auxNode;
-        // } else if (node.parent.right == node) {
-        //     node.parent.right = auxNode;
-        // } else {
-        //     node.parent.left = auxNode;
-        // }
-    
-        // node.right = auxNode;
-        // auxNode.parent = node;
-
-        // auxNode.right = node;
-        // node.parent = auxNode;
     } 
 
     preOrder(node) {
@@ -163,18 +115,70 @@ class Tree {
         }
     }
 
-
-
 }
 const tree = new Tree();
 
-tree.insert(12);
-tree.insert(8);
-tree.insert(10);
+//rotação a esquerda simples
+// tree.insert(6);
+// tree.insert(8);
+// tree.insert(9);
 
-// tree.rotateLeft(tree.right);
+
+tree.insert(32);
+tree.insert(31);
+tree.insert(35);
+tree.insert(33);
+tree.insert(36);
+tree.insert(38);
+
+
+//rotação a direita simples
+// tree.insert(11);
+// tree.insert(8);
+// tree.insert(5);
+
+// tree.insert(50);
+// tree.insert(70);
+// tree.insert(20);
+// tree.insert(10);
+// tree.insert(30);
+// tree.insert(5);
+
+//rotação dupla a esquerda
+
+// tree.insert(50);
+// tree.insert(80);
+// tree.insert(70);
+// tree.insert(60);
+// tree.insert(90);
+// tree.insert(20);
+
+//rotação dupla a direita inserindo o 7 entre o 6 
+// tree.insert(13);
+// tree.insert(10);
+// tree.insert(15);
+// tree.insert(16);
+// tree.insert(11);
+//  tree.insert(5);
+//  tree.insert(6);
+//  tree.insert(4);
+//  tree.insert(7);
+//  tree.insert(11);
+
+// tree.insert(50);
+// tree.insert(90);
+//  tree.insert(20);
+//  tree.insert(10);
+//  tree.insert(40);
+//  tree.insert(30);
+console.log("Pre order " )
+tree.preOrder(tree.root)
+
+console.log("In order " )
+tree.inOrder(tree.root)
+
+console.log("Pos order " )
+tree.posOrder(tree.root)
 
 console.log(tree);
-
-
 
